@@ -8,6 +8,7 @@ trigger:
 
 variables:
     imageName: 'httplistener:$(build.buildId)'
+    dockerId: 'nwestfall'
 
 jobs:
 - job: linux
