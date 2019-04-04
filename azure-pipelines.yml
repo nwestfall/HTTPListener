@@ -7,7 +7,7 @@ trigger:
 - master
 
 variables:
-    imageName: 'httplistener:$(build.buildId)'
+    imageName: 'httplistener:$(build.buildNumber)'
     dockerId: 'nwestfall'
 
 jobs:
