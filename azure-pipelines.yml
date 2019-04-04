@@ -15,23 +15,19 @@ jobs:
   pool:
     vmImage: 'Ubuntu-16.04'
   steps:
-  - script: docker build -f Dockerfile -t $(imageName)-linux .
+  - script: docker build -f Dockerfile -t $(dockerId)/$(imageName)-linux .
     displayName: 'docker build'
   - script: |
-      docker login -u $(dockerId) -p $(pswd)
+      docker login -u $(dockerId) -p $(dockerPassword)
       docker push $(dockerId)/$(imageName)
-    env:
-      pswd: $(dockerPassword)
     displayName: 'docker push'
 - job: windows
   pool:
     vmImage: 'win1803'
   steps:
-  - script: docker build -f Dockerfile -t $(imageName)-windows .
+  - script: docker build -f Dockerfile -t $(dockerId)/$(imageName)-windows .
     displayName: 'docker build'
   - script: |
-      docker login -u $(dockerId) -p $(pswd)
+      docker login -u $(dockerId) -p $(dockerPassword)
       docker push $(dockerId)/$(imageName)
-    env:
-      pswd: $(dockerPassword)
     displayName: 'docker push'
