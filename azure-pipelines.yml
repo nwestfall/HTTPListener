@@ -19,7 +19,7 @@ jobs:
     displayName: 'docker build'
   - script: |
       docker login -u $(dockerId) -p $(dockerPassword)
-      docker push $(dockerId)/$(imageName)
+      docker push $(dockerId)/$(imageName)-linux
     displayName: 'docker push'
 - job: windows
   pool:
@@ -29,5 +29,5 @@ jobs:
     displayName: 'docker build'
   - script: |
       docker login -u $(dockerId) -p $(dockerPassword)
-      docker push $(dockerId)/$(imageName)
+      docker push $(dockerId)/$(imageName)-windows
     displayName: 'docker push'
